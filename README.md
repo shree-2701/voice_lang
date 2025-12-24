@@ -47,6 +47,29 @@ This project focuses on a stable, minimal pipeline:
                               ▼
 ```
 
+## 🧠 Memory & State Management
+
+The system employs a dual-layer memory architecture to ensure context retention while maintaining deterministic reliability.
+
+### 1. Session Layer (Short-term)
+Managed by `AssistantSession` in `src/simple_assistant.py`. This layer persists only for the duration of the user interaction session.
+- **Context Tracking:** Remembers the currently selected language (`tamil`/`english`) and the last set of scheme suggestions.
+- **Flow State:** Maintains the position in the "Eligibility Checklist" (e.g., "Question 2 of 5: Do you have an Income Certificate?").
+- **Slot Filling:** Temporarily stores user answers (Yes/No) to eligibility criteria to determine final qualification.
+- **Reset Triggers:** Automatically clears state upon completion of a flow, explicit "Nandri/Vanakkam", or switching to a new scheme.
+
+### 2. Knowledge Layer (Long-term)
+Managed by `SchemeRetriever` and static localization dictionaries.
+- **Static Database:** Contains hardcoded definitions for 10+ core government schemes (PM Kisan, PMAY, etc.).
+- **Localization Memory:** Maps English scheme IDs to Tamil display names (`TA_SCHEME_NAMES`) and translates technical terms (Benefits, Documents) into natural Tamil phrasing.
+- **Fuzzy Index:** Uses `difflib` and phonetic normalization to retrieve schemes even when input contains spelling errors (e.g., "ஆவாச்" -> "ஆவாஸ்").
+
+### 3. Agent Memory (Advanced/Future)
+Located in `src/memory/`, this module contains the infrastructure for a more complex agentic memory (not currently active in the Simple Assistant):
+- **Conversation History:** Sliding window of recent turns with summarization.
+- **Entity Extraction:** Structured storage of user details (Name, Age, Income) extracted from conversation.
+- **Confidence Scoring:** Tracks the reliability of inferred information.
+
 ## 📁 Project Structure
 
 ```
