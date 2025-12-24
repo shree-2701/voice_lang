@@ -1,0 +1,58 @@
+# Voice Agent - Government Scheme Assistant
+# Core Dependencies
+
+# Speech Recognition (STT)
+openai-whisper>=20231117
+SpeechRecognition>=3.10.0
+sounddevice>=0.4.6
+soundfile>=0.12.1
+pyaudio>=0.2.13
+
+# Text-to-Speech (TTS)
+gTTS>=2.5.0
+pyttsx3>=2.90
+azure-cognitiveservices-speech>=1.34.0
+
+# LLM Integration
+openai>=1.6.0
+anthropic>=0.8.0
+langchain>=0.1.0
+langchain-openai>=0.0.2
+langchain-anthropic>=0.1.0
+
+# Vector Store & Embeddings
+chromadb>=0.4.22
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn>=0.25.0
+python-multipart>=0.0.6
+websockets>=12.0
+
+# Audio Processing
+numpy>=1.24.0
+scipy>=1.11.0
+librosa>=0.10.1
+pydub>=0.25.1
+
+# Translation & Language Support
+googletrans==4.0.0-rc1
+indic-transliteration>=2.3.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+httpx>=0.26.0
+aiofiles>=23.2.1
+rich>=13.7.0
+typer>=0.9.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+
+# Frontend (optional Gradio interface)
+gradio>=4.14.0
